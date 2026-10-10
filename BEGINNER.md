@@ -5,3 +5,5 @@
 marketCloses可选；没有时不应用旧市场风险档位，明确保留限制。topN、rebalanceEvery、costBps为历史情景参数；不把统一基点成本当成实际交易收费。价格复权方式、分红、币种、身份与来源须由资料提供者核对，现有输入不是自动核验的证券名录。
 
 未通过时先核对身份、日期、缺值和输出目录，不能填零凑齐。结果含input.json、result.json、打开这里.html及文件摘要。更新资料使用新目录，不改冻结历史。
+
+真实资料须在顶层明确currency=CNY和priceBasis（provided-price或provided-total-return），每行明确market=SSE或SZSE；不能隐式换汇。价格收益口径不包含未提供的分红现金，不能当成完整总回报。

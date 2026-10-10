@@ -63,9 +63,12 @@
     "2026-03-05"
   ],
   "origin": "teaching",
+  "currency": "CNY",
+  "priceBasis": "provided-price",
   "rows": [
     {
       "symbol": "900001",
+      "market": "SSE",
       "index": "teaching-0",
       "type": "industry",
       "eligible": true,
@@ -134,6 +137,7 @@
     },
     {
       "symbol": "900002",
+      "market": "SSE",
       "index": "teaching-1",
       "type": "industry",
       "eligible": true,
@@ -202,6 +206,7 @@
     },
     {
       "symbol": "900003",
+      "market": "SSE",
       "index": "teaching-2",
       "type": "industry",
       "eligible": true,

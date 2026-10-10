@@ -28,6 +28,21 @@ class RotationTests(unittest.TestCase):
     def test_cost_and_unknown_market(self):
         data=teaching();zero=backtest(dict(data,costBps=0));fee=backtest(dict(data,costBps=20))
         self.assertLess(fee['totalReturn'],zero['totalReturn']);self.assertFalse(exposure([])['ready'])
+    def test_declared_history_requires_cn_market_and_price_basis(self):
+        data=teaching();data['origin']='declared-history'
+        calculate(data)
+        for key,value in [('currency','USD'),('priceBasis','unknown')]:
+            with self.assertRaises(ValueError):calculate(dict(data,**{key:value}))
+        data['rows'][0]['market']='CN'
+        with self.assertRaises(ValueError):calculate(data)
+    def test_replacement_boundaries_and_tied_ranks(self):
+        from cn_etf_rotation.rotation import may_replace
+        args=dict(holdingRank=.4,candidateRank=.5,heldTradingDays=9,isRebalance=True)
+        self.assertTrue(may_replace(**args))
+        for key,value in [('heldTradingDays',8),('isRebalance',False),('swaps',1),('candidateRank',.499)]:
+            self.assertFalse(may_replace(**dict(args,**{key:value})))
+        rows=[dict(symbol=s,index=s,eligible=True,type='industry',closes=[1]*21) for s in ['b','a']]
+        self.assertEqual(rank(rows),[dict(symbol=s,momentum=0.,rank01=.5) for s in ['a','b']])
     def test_repeat_cli_results_exclude_runtime_paths(self):
         from cn_etf_rotation.__main__ import publish
         with TemporaryDirectory() as tmp:
