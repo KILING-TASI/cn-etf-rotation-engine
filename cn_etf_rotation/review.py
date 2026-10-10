@@ -4,7 +4,7 @@ import math
 from .rotation import rank, exposure, may_replace, CONFIG, valid_prices
 
 def validate(spec):
-    if not isinstance(spec,dict) or set(spec)-{'asOf','dates','rows','marketCloses','origin','rebalanceEvery','costBps','topN'}:raise ValueError('输入字段不支持')
+    if not isinstance(spec,dict) or set(spec)-{'asOf','dates','rows','marketCloses','origin','rebalanceEvery','costBps','topN','currency','priceBasis'}:raise ValueError('输入字段不支持')
     cutoff=dt.date.fromisoformat(spec['asOf']);dates=spec['dates'];rows=spec['rows']
     if not isinstance(dates,list) or not 26<=len(dates)<=5000:raise ValueError('需要26至5000个共同日期')
     if dates!=sorted(set(dates)) or any(dt.date.fromisoformat(d)>cutoff for d in dates):raise ValueError('日期重复、乱序或晚于截止')
@@ -16,6 +16,9 @@ def validate(spec):
     market=spec.get('marketCloses',[])
     if market and (len(market)!=len(dates) or not valid_prices(market,len(dates))):raise ValueError('市场价格日历不一致')
     if spec.get('origin') not in ('teaching','declared-history'):raise ValueError('来源须为teaching或declared-history；不是历史池认证')
+    if spec.get('origin')=='declared-history':
+        if spec.get('currency')!='CNY' or spec.get('priceBasis') not in ('provided-price','provided-total-return'):raise ValueError('真实资料需明确CNY及同一价格/总收益口径，不做隐式汇率转换')
+        if any(row.get('market') not in ('SSE','SZSE') for row in rows):raise ValueError('真实资料需明确沪深市场，不按代码猜')
     return spec
 
 def calculate(spec):
@@ -43,7 +46,9 @@ def backtest(spec):
             entered={s:entered[s] for s in proposed};weights=proposed
             trades.append({'signalDate':signal_date,'executionDate':dates[t],'turnover':turnover,'costBps':cost,'weights':dict(weights)})
             pending=None
-        peak=max(peak,wealth);maxdd=max(maxdd,1-wealth/peak);path.append({'date':dates[t],'wealthIndex':wealth,'cashWeight':1-sum(weights.values())})
+        cash=1-sum(weights.values())
+        if cash < -1e-10:raise ValueError('持仓权重超过现金约束')
+        peak=max(peak,wealth);maxdd=max(maxdd,1-wealth/peak);path.append({'date':dates[t],'wealthIndex':wealth,'cashWeight':max(0.,cash)})
         if (t-25)%every==0 and t+1<len(dates):
             ranked=rank([dict(r,closes=r['closes'][:t+1]) for r in rows]);rank_by={r['symbol']:r['rank01'] for r in ranked}
             if not ranked:continue
@@ -57,4 +62,4 @@ def backtest(spec):
             pending=({s:target/len(chosen) for s in chosen},dates[t])
     return {'methodVersion':'etf-fixed-pool-next-close-scenario/1','asOf':d['asOf'],'path':path,'trades':trades,'totalReturn':wealth-1,'maxDrawdown':maxdd,
             'parameters':{'topN':n,'rebalanceEvery':every,'costBps':cost,'execution':'next_observed_close'},
-            'limitations':['固定声明池历史情景，未取得历史成分或退市全集，不宣称无幸存者偏差','信号只用当时及以前价格，下一观察日收盘执行；不是下一开盘成交','成本是统一假设，不含真实交易税费、滑点和流动性','未提供市场价格时不应用市场风险档位；不推定完整交易日历']}
+            'limitations':['固定声明池历史情景，未取得历史成分或退市全集，不宣称无幸存者偏差','信号只用当时及以前价格，下一观察日收盘执行；不是下一开盘成交','成本是统一假设，不含真实交易税费、滑点和流动性','未提供市场价格时不应用市场风险档位；不推定完整交易日历','现金按零收益；价格序列不会额外计入分红，总收益序列须由提供者明确并核验']}

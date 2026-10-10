@@ -5,14 +5,15 @@
   "noticeFiles": [
     {
       "path": "LICENSE",
-      "sha256": "5eb13a19b5955031e59f306841a8ceba43c76219be802ab375da1cba2eac836c"
+      "sha256": "58e87e7b93154b33ec6e00a042768283bc64c099ae465d63a66413d19c3fee27"
     },
     {
       "path": "THIRD_PARTY_NOTICES.md",
-      "sha256": "28ae489f421a6aa5ab7e1a023890c52d334ff7bc5d66aa4d2068bf8b656f5c08"
+      "sha256": "aa4e3a73f94ba8aed2cb8492f679d0eda0d49c0b924fc5e268a66292cbf56dba"
     }
   ],
   "dataRights": "Source-specific; not granted by code MIT",
   "methodReferences": "See repository method documents; citations do not convey text or data redistribution rights",
-  "scope": "Notice-file inventory and hashes, not an authorization or legal compliance certificate"
+  "scope": "Notice-file inventory and hashes, not an authorization or legal compliance certificate",
+  "hashFormat": "utf-8-lf"
 }
