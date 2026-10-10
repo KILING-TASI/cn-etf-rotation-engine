@@ -1,0 +1,11 @@
+include *.md LICENSE try_demo.py Start-Demo.cmd Start-Demo.sh
+recursive-include examples *.json
+recursive-include tests *.py
+recursive-include cn_etf_rotation *.js
+global-exclude *.pyc *.pdf *.xls *.xlsx
+
+include CONTRIBUTING.md SECURITY.md LIFECYCLE.md
+
+global-exclude *.xls
+
+include RIGHTS_INDEX.json
