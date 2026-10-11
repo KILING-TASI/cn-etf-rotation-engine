@@ -3,7 +3,7 @@ requires = ["setuptools>=77"]
 build-backend = "setuptools.build_meta"
 [project]
 name = "cn-etf-rotation-engine"
-version = "0.1.0"
+version = "0.1.1.dev0"
 description = "独立ETF行业轮动、相对强弱及固定池历史情景研究"
 requires-python = ">=3.10"
 dependencies = []
@@ -15,7 +15,7 @@ cn-etf-rotation-engine = "cn_etf_rotation.__main__:main"
 [tool.setuptools.packages.find]
 include = ["cn_etf_rotation*"]
 [tool.setuptools.package-data]
-cn_etf_rotation = ["legacy/*.js"]
+cn_etf_rotation = ["legacy/*.js", "composite_runner.js"]
 [tool.setuptools.data-files]
 "share/cn-etf-rotation-engine" = ["USAGE.md", "RIGHTS_INDEX.json", "CONTRIBUTING.md", "SECURITY.md", "LIFECYCLE.md", "README.md", "README.en.md", "SKILL.md", "BEGINNER.md", "CHANGELOG.md", "THIRD_PARTY_NOTICES.md", "MIGRATION.md", "VALIDATION.md"]
-"share/cn-etf-rotation-engine/examples" = ["examples/teaching.json"]
+"share/cn-etf-rotation-engine/examples" = ["examples/teaching.json", "examples/composite-teaching.json"]

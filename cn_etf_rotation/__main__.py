@@ -35,6 +35,15 @@ def publish(spec,result,out):
         if stage.exists():shutil.rmtree(stage)
 
 def main(argv=None):
+    incoming=sys.argv[1:] if argv is None else argv
+    if incoming and incoming[0]=='composite':
+        from .composite import main as composite_main
+        old=sys.argv;sys.argv=[old[0],*incoming[1:]]
+        try:return composite_main()
+        finally:sys.argv=old
+    if incoming and incoming[0]=='import-snapshots':
+        from .snapshot_import import main as import_main
+        return import_main(incoming[1:])
     for stream in (sys.stdout,sys.stderr):
         if hasattr(stream,'reconfigure'):stream.reconfigure(encoding='utf-8')
     p=argparse.ArgumentParser(description='独立ETF相对强弱、轮动规则与固定池历史情景，不联网、不交易')

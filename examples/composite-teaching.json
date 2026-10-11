@@ -1,0 +1,71 @@
+{
+  "inputSchema": "etf-composite/1",
+  "asOf": "2026-10-09",
+  "sampleType": "teaching",
+  "weights": [
+    25,
+    25,
+    25,
+    25
+  ],
+  "selected": [
+    "a",
+    "b",
+    "c"
+  ],
+  "snapshot": {
+    "date": "2026-10-09",
+    "events": [],
+    "sectors": [
+      {
+        "id": "a",
+        "name": "教学半导体",
+        "date": "2026-10-09",
+        "stale": false,
+        "proxy": false,
+        "raw": {
+          "earnings": 10,
+          "roe": 3,
+          "valuation": 29,
+          "flow": 4,
+          "trend": 1,
+          "ma": 2,
+          "volume": 3
+        }
+      },
+      {
+        "id": "b",
+        "name": "教学银行",
+        "date": "2026-10-09",
+        "stale": false,
+        "proxy": false,
+        "raw": {
+          "earnings": 20,
+          "roe": 6,
+          "valuation": 28,
+          "flow": 8,
+          "trend": 2,
+          "ma": 4,
+          "volume": 6
+        }
+      },
+      {
+        "id": "c",
+        "name": "教学医药",
+        "date": "2026-10-09",
+        "stale": false,
+        "proxy": false,
+        "raw": {
+          "earnings": 30,
+          "roe": 9,
+          "valuation": 27,
+          "flow": 12,
+          "trend": 3,
+          "ma": 6,
+          "volume": 9
+        }
+      }
+    ]
+  },
+  "funds": {}
+}
