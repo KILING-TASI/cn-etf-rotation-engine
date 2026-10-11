@@ -33,7 +33,7 @@ def calculate(spec):
     result=json.loads(p.stdout)
     result.update(methodVersion=METHOD,methodSha256=hashlib.sha256(engine.read_bytes()).hexdigest(),asOf=asof,
         conclusion=('原创教学数据，不是真实行情。' if spec['sampleType']=='teaching' else '')+'按输入观察池和四维权重复现历史研究评分；分值不是收益预测，也不自动生成交易指令。',
-        limitations=['采用原JavaScript评分，不声称策略有效性或全市场排名','snapshot中的事件verified只是输入标记，程序不独立核实原文','代理和原始指标不混池；陈旧、缺值板块不排名；缺北向指标保持原说明','实际数据刷新由数据来源入口负责，本入口只计算明确快照','Node.js仅为综合评分可选依赖，基础Python动量入口独立可用'],humanRows=[[r['name'],'数据不足' if r['total'] is None else round(r['total'],3)] for r in result['ranking']])
+        limitations=['沿用原研究评分，不声称策略有效性或全市场排名','事件核验标记由资料提供者填写，程序未独立核实原文','空事件清单在旧规则中对应中性50分，不证明没有相关消息或已完成检索','代理和原始指标不混池；陈旧、缺值板块不排名；缺北向指标保持原说明','实际数据刷新由数据来源入口负责，本入口只计算明确快照','Node.js仅为综合评分可选依赖，基础Python动量入口独立可用'],humanRows=[[r['name'],'数据不足' if r['total'] is None else round(r['total'],3)] for r in result['ranking']])
     return result
 
 def main():
