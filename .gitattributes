@@ -3,3 +3,6 @@
 *.md text eol=lf
 *.cmd text eol=crlf
 *.sh text eol=lf
+
+# Preserve CRLF bytes in git clones and automatic source archives.
+Start-Demo.cmd -text eol=crlf whitespace=cr-at-eol
