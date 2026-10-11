@@ -3,7 +3,7 @@ requires = ["setuptools>=77"]
 build-backend = "setuptools.build_meta"
 [project]
 name = "cn-etf-rotation-engine"
-version = "0.1.1.dev0"
+version = "0.1.1"
 description = "独立ETF行业轮动、相对强弱及固定池历史情景研究"
 requires-python = ">=3.10"
 dependencies = []

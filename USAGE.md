@@ -20,7 +20,7 @@ cn-etf-rotation-engine backtest --input 资料.json --out-dir reports/history
 [English](README.en.md) · [版本记录](CHANGELOG.md) · [验收范围](VALIDATION.md)
 
 
-## 本地待发布：综合评分与冻结快照导入
+## 本轮更新：综合评分与冻结快照导入
 
 ```console
 cn-etf-rotation-engine composite --input examples/composite-teaching.json --out-dir reports/composite
