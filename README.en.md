@@ -4,7 +4,7 @@ A standalone standard-library tool for declared-pool relative momentum, legacy r
 
 [中文说明](README.md) · [Release v0.1.2](https://github.com/KILING-TASI/cn-etf-rotation-engine/releases/tag/v0.1.2) · [Skill instructions](SKILL.md) · [Input preparation](BEGINNER.md)
 
-Current release: **regular release**. Python **3.10+**. Base runtime dependencies: none.
+Current release: **v0.1.2 · regular release**. Python **3.10+**. Base runtime dependencies: none.
 
 ## First run
 
