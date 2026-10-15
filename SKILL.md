@@ -2,7 +2,7 @@
 name: cn-etf-rotation-engine
 description: 用户要比较已声明行业ETF观察池的相对强弱、核对轮动规则或测算历史调仓情景时使用；独立运行，不负责联网采集或交易。
 metadata:
-  version: 0.1.2
+  version: 0.1.3
 license: MIT
 ---
 

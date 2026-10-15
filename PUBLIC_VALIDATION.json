@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "public-validation/1",
+  "repository": "cn-etf-rotation-engine",
+  "registeredOn": "2026-10-15",
+  "hashFormat": "UTF-8 with LF newlines; BOM ignored; original response hashes remain in original receipts",
+  "coverage": "no-eligible-public-inputs",
+  "sourceAuthenticityCertified": false,
+  "evidence": [],
+  "checkFiles": [],
+  "gaps": [
+    "没有可随包授权的历史动态ETF池及全套成交约束样本",
+    "固定池教学成功不等于策略净收益有效"
+  ],
+  "limits": "registry and selected counterexamples; no new original-document authentication or investment-effect certification"
+}

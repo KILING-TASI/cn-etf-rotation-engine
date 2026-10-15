@@ -2,13 +2,13 @@
 
 A standalone standard-library tool for declared-pool relative momentum, legacy rotation rules, and fixed-pool historical scenarios. Acquisition belongs to cn-data-adapters; this tool neither fetches data nor trades.
 
-[中文说明](README.md) · [Release v0.1.2](https://github.com/KILING-TASI/cn-etf-rotation-engine/releases/tag/v0.1.2) · [Skill instructions](SKILL.md) · [Input preparation](BEGINNER.md)
+[中文说明](README.md) · [Release v0.1.3](https://github.com/KILING-TASI/cn-etf-rotation-engine/releases/tag/v0.1.3) · [Skill instructions](SKILL.md) · [Input preparation](BEGINNER.md)
 
-Current release: **v0.1.2 · regular release**. Python **3.10+**. Base runtime dependencies: none.
+Current release: **v0.1.3 · regular release**. Python **3.10+**. Base runtime dependencies: none.
 
 ## First run
 
-Download the [complete source ZIP](https://github.com/KILING-TASI/cn-etf-rotation-engine/releases/download/v0.1.2/cn-etf-rotation-engine-v0.1.2-source.zip), extract it and enter the directory containing `try_demo.py`:
+Download the [complete source ZIP](https://github.com/KILING-TASI/cn-etf-rotation-engine/releases/download/v0.1.3/cn-etf-rotation-engine-v0.1.3-source.zip), extract it and enter the directory containing `try_demo.py`:
 
 ```console
 python try_demo.py --no-open --out-dir reports/first-demo
